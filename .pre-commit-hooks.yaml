@@ -1,0 +1,17 @@
+- id: terraform-module
+  name: terraform pre-commit configuration
+  language: script
+  entry: ./run-hooks --id terraform-module
+  require_serial: true
+
+- id: common
+  name: common pre-commit configuration
+  language: script
+  entry: ./run-hooks --id common
+  require_serial: true
+
+- id: secrets
+  name: secrets pre-commit configuration
+  language: script
+  entry: ./run-hooks --id secrets
+  require_serial: true

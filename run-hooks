@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import sys
+
+def get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--id",
+        help="Path to the input file",
+        type=str, 
+        required=True,
+    )
+    return parser.parse_known_args()
+
+def get_config_file(hook_id: str) -> str:
+    return f"{hook_id}.yaml"    
+
+def main():
+    known_args, unknown_args = get_arguments()
+    cfg = os.path.join(os.path.dirname.realpath(
+        __file__)), get_config_file(known_args.id)
+    cmd = ["pre-commit", "run", "--config", cfg, "--files"] + unknown_args
+    os.execvp(cmd[0], cmd)
+
+if __name__ == "__main__":
+    sys.exit(main())

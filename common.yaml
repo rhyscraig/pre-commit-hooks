@@ -1,0 +1,50 @@
+exclude: |
+  ^(
+  \.venv|
+  env|
+  venv|
+  .git
+  \.mypy_cache
+  \.pytest_cache
+  \.tox
+  \.eggs
+  \.env
+  \.venv
+  \.env
+  \.venv
+  \.vscode
+  \.pytest_cache
+  \.tox
+  \.nox
+  \.eggs
+  \.idea
+  \.vscode
+  __pycache__|
+  .*/.*layers/python/lib/.*
+  \.terraform|
+  \.terraform.lock.hcl|
+  terraform\.tfstate\(\.backup)?|
+  terraform\.tfvars(\.json|\.example)?|
+  terraform\.tfplan
+  )/
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    # git style
+    -id: check-added-large-files
+    -id: check-merge-conflict
+    -id: check-vcs-permalinks
+    -id: forbid-new-submodules
+    -id: no-commit-to-branch
+     args: [--branch, master, --branch, main]
+    # common errors
+    -id: end-of-file-fixer
+    -id: trailing-whitespace
+     args: [--markdown-linebreak-ext=md]
+     exclude: CHANEGELOG.md
+     # Cross platform
+    -id: check-case-conflict
+    -id: mixed-line-ending
+     args: [--fix=lf]
