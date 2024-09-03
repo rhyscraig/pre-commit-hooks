@@ -35,5 +35,5 @@ repos:
         args:
           - --hook-config=--parallelism-ci-cpu-cores=1
           - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-          - --args=--module
+          - --args=--call-module-type=all
           - --args=--enable-rule=terraform_documented_variables
